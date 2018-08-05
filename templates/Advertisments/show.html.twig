@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SymphArt Advertisments{% endblock %}
+
+{% block body %}
+<h1>Advertisment Title: {{ advertisment.title}}</h1>
+<p>Description: {{ advertisment.body }}</p>
+<td>Posted: {{ advertisment.user.username }}</td>
+<td>Date: {{ advertisment.date|date('Y-m-d') }}</td>
+<hr>
+
+<a href="/"> Go back</a>
+ 
+{% endblock %}

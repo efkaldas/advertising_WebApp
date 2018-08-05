@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Advertisments{% endblock %}
+
+{% block body %}
+  {% if advertisments %}
+    <table id="advertisments" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Advertisment Title</th>
+          <th>Actions</th>
+          <th>User posted</th>
+          <th>Date posted</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for advertisment in advertisments %}
+          <tr>
+            <td>{{ advertisment.title }}</td>
+            <td>
+              <a href="/advertisment/{{ advertisment.id }}" 
+              class="btn btn-dark">Show</a>
+              {% if app.user == advertisment.user %}
+              <a href="#" 
+              class="btn btn-danger delete-advertisment" data-id="{{ advertisment.id }}">Delete</a>
+                {% endif %}
+            </td>
+            <td>{{ advertisment.user.username }}</td>
+            <td>{{ advertisment.date|date('Y-m-d') }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No Advertisments...</p>
+  {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+  <script src="/js/main.js"></script>
+{% endblock %}
