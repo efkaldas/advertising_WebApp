@@ -1,0 +1,8 @@
+#path/to/project/web/.htaccess
+
+# Remove subdirectory and app.php file from request URI
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(app\.php|app_dev\.php|config\.php|web/(?!app_dev\.php|config\.php))
+    RewriteRule ^(app\.php|app_dev\.php|config\.php)?/?(.*)$ /$2 [R=301,L]
+</IfModule>
